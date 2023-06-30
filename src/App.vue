@@ -1,15 +1,9 @@
-<script setup lang="ts">
-import Timeline from "./components/Timeline.vue"
-</script>
-
 <template>
-  <div class="section">
-    <div class="container">
-      <Timeline/>
-    </div>
+  <div class="container">
+    <Navbar/>
   </div>
 </template>
 
-<style>
-@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
-</style>
+<script setup lang="ts">
+import Navbar from "./components/Navbar.vue";
+</script>
