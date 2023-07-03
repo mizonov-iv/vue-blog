@@ -2,7 +2,7 @@
   <nav class="navbar">
     <a
         class="navbar-item"
-        href=""
+        :class="{'navbar-item-active' : period === selectedPeriod}"
         v-for="period in periods"
         :key="period"
         @click.prevent="selectPeriod(period)"
@@ -18,11 +18,9 @@ import {ref} from "vue";
 
 const periods = ["Сегодня", "За неделю", "За месяц"];
 
-let selectedPeriod = ref("Сегодня");
+const selectedPeriod = ref("Сегодня");
 
-function selectPeriod (period: string) {
-  selectedPeriod.value = period
-
-}
-
+const selectPeriod = (period: string) => {
+  selectedPeriod.value = period;
+};
 </script>
