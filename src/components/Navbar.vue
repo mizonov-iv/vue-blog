@@ -1,26 +1,42 @@
 <template>
-  <nav class="navbar">
+  <nav>
     <a
-        class="navbar-item"
-        :class="{'navbar-item-active' : period === selectedPeriod}"
+        href=""
+        :class="{'active': period === selectedPeriod}"
         v-for="period in periods"
         :key="period"
         @click.prevent="selectPeriod(period)"
     >
-      {{ period }}
+      {{period}}
     </a>
   </nav>
-  <p>{{ selectedPeriod }}</p>
+  <h1>{{selectedPeriod}}</h1>
+  <ul>
+    <li v-for="post in posts" :key="post">
+      <p>{{post.title}}</p>
+      <p>{{post.created}}</p>
+    </li>
+  </ul>
 </template>
 
 <script setup lang="ts">
 import {ref} from "vue";
+import {Post, today, thisWeek, thisMonth} from "../posts";
 
-const periods = ["Сегодня", "За неделю", "За месяц"];
+const periods = ["today", "this week", "this month"] as const;
 
-const selectedPeriod = ref("Сегодня");
+type Period = typeof periods[number]
 
-const selectPeriod = (period: string) => {
+const posts: Post[] = [
+    today,
+    thisWeek,
+    thisMonth
+]
+
+function selectPeriod (period: Period) {
   selectedPeriod.value = period;
-};
+}
+
+const selectedPeriod = ref<Period>("today");
+
 </script>

@@ -6,24 +6,21 @@ export interface Post {
     created: string;
 }
 
-export interface TimeLinePost extends Omit<Post, 'created'> {
-    created: DateTime
-}
-
 export const today: Post = {
     id: "1",
-    title: "Today",
+    title: "today",
     created: DateTime.now().toISO()
 }
 
 export const thisWeek: Post = {
     id: "2",
-    title: "This Week",
-    created: DateTime.now().minus({ days: 5}).toISO()
+    title: "this week",
+    created: DateTime.now().minus({days: 5}).toISO()
 }
 
 export const thisMonth: Post = {
-    id: "3",
-    title: "This Month",
-    created: DateTime.now().minus({ week: 3}).toISO()
+    id: "2",
+    title: "this month",
+    created: DateTime.now().minus({weeks: 3}).toISO()
 }
+
