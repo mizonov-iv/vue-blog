@@ -32,3 +32,9 @@ a:hover {
 a.active {
     border-bottom: 2px solid lightgray;
 }
+
+ul {
+    margin: 0 auto;
+    display: flex;
+
+}
