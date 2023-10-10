@@ -5,18 +5,40 @@
       placeholder="type something"
       v-model="title"
   >
-  {{title}}
+
+  <div class="post-text-wrapper">
+    <div class="content" contenteditable ref="contentEditable" @input="handleInput"/>
+    <div class="content">{{ content }}</div>
+  </div>
+
+
 </template>
 
 <script setup lang="ts">
-  import TimeLinePost from "./TimeLinePost.vue";
-  import {ref} from "vue";
+  import {TimeLinePost} from "../posts";
+  import {ref, onMounted} from "vue";
 
   const props = defineProps<{
     post: TimeLinePost
   }>()
 
-  const title = ref(props.post.title)
+  const title = ref(props.post.title);
+  const content = ref(props.post.markdown)
+  const contentEditable = ref<HTMLDivElement>();
+
+  onMounted(() => {
+    if(!contentEditable.value) {
+      throw Error('Some error')
+    }
+    contentEditable.value.innerText = content.value
+  })
+
+  function handleInput () {
+    if(!contentEditable.value) {
+      throw Error('Some error')
+    }
+    content.value = contentEditable.value?.innerText
+  }
 
 </script>
 

@@ -33,6 +33,10 @@ a.active {
     border-bottom: 2px solid lightgray;
 }
 
+input {
+    margin-left: 100px;
+}
+
 .posts-list {
     width: 100%;
     list-style: none;
@@ -54,4 +58,17 @@ a.active {
 
 .post-list-item > * {
     margin-bottom: 9px;
+}
+
+.post-text-wrapper {
+    margin: 30px auto;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content {
+    padding: 30px;
+    border: 1px solid black;
+    max-width: 300px;
 }

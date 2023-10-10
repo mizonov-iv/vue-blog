@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import TimeLinePost from "./TimeLinePost.vue";
+import {TimeLinePost} from "../posts";
 
   defineProps<{
     post: TimeLinePost
