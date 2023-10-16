@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import {Post, today, thisWeek, thisMonth} from "../posts";
+import {Post, today, thisWeek, thisMonth, TimeLinePost} from "../posts";
 import {Period} from "../constans";
 import {DateTime} from "luxon";
 import axios from "axios";
@@ -24,6 +24,7 @@ export const usePosts = defineStore("Posts", {
         setSelectedPeriod(period: Period) {
             this.selectedPeriod = period;
         },
+
         async getPosts() {
             const response = await axios.get('http://localhost:8000/posts/');
 
@@ -39,7 +40,20 @@ export const usePosts = defineStore("Posts", {
 
             this.ids = ids;
             this.all = all
-    },
+        },
+
+        createNewPost (post: TimeLinePost) {
+            // console.log(post);
+            const body = JSON.stringify({...post, created: post.created.toISO()});
+
+            return window.fetch("http://localhost:8000/posts/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body
+            })
+        }
     },
     getters: {
         filteredPosts: (state) => {
