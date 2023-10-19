@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import {TimeLinePost} from "../posts";
 import {NewUser} from "../users";
 
 export const useUsers = defineStore("users", {
@@ -8,7 +7,7 @@ export const useUsers = defineStore("users", {
             // console.log(post);
             const body = JSON.stringify(newUser);
 
-            return window.fetch("http://localhost:8000/users/", {
+            return window.fetch("api/users/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

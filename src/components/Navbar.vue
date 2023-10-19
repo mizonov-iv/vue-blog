@@ -1,5 +1,5 @@
 <template>
-  <!--  MODAL-->
+  <!--MODAL-->
   <Teleport to="body">
     <div class="modal-background" v-if="modal.show.value">
       <div class="modal-wrapper">
@@ -8,6 +8,7 @@
       </div>
     </div>
   </Teleport>
+  <!--NAVIGATION-->
   <div>
     <button @click="modal.showModal()">Sign Up</button>
     <RouterLink to="/posts/new">Create new post</RouterLink>

@@ -26,7 +26,7 @@ export const usePosts = defineStore("Posts", {
         },
 
         async getPosts() {
-            const response = await axios.get('http://localhost:8000/posts/');
+            const response = await axios.get('api/posts/');
 
             await delay();
 
@@ -46,7 +46,7 @@ export const usePosts = defineStore("Posts", {
             // console.log(post);
             const body = JSON.stringify({...post, created: post.created.toISO()});
 
-            return window.fetch("http://localhost:8000/posts/", {
+            return window.fetch("api/posts/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
