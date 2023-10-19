@@ -38,7 +38,7 @@ button {
     border: 1px solid darkgrey;
     border-radius: 8px;
     background: transparent;
-    cursor: pointer;
+    cursor: pointer ;
 }
 
 input {
