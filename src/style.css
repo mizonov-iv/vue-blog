@@ -33,6 +33,21 @@ a.active {
     border-bottom: 2px solid lightgray;
 }
 
+button {
+    padding: 8px;
+    border: 1px solid darkgrey;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+}
+
+input {
+    padding: 5px;
+    border: 1px solid darkgrey;
+    border-radius: 8px;
+    margin: 5px 0;
+}
+
 .posts-list {
     width: 100%;
     list-style: none;
@@ -89,6 +104,7 @@ a.active {
     background: white;
     border-radius: 16px;
     border: 2px solid white;
+    padding: 15px;
 }
 
 /*input*/
