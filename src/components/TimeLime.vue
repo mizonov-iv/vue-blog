@@ -9,7 +9,6 @@
       {{period}}
     </a>
   </nav>
-  <p>{{postsStore.selectedPeriod}}</p>
   <TimeLinePost
       v-for="post in postsStore.filteredPosts"
       :key="post.id"

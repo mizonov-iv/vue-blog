@@ -16,7 +16,7 @@ const error = ref('');
 
 async function handleSignIn (newUser: NewUser) {
   const body = JSON.stringify(newUser);
-
+  console.log("body: ", body)
   const res = await window.fetch("/api/login/", {
     method: "POST",
     headers: {
@@ -24,6 +24,8 @@ async function handleSignIn (newUser: NewUser) {
     },
     body
   })
+
+  console.log("res: ", res)
 
   if([401, 404].includes(res.status)) {
     error.value = "Username or password was incorrect."

@@ -5,34 +5,36 @@
       placeholder="type something"
       v-model="title"
   >
-
   <div class="post-text-wrapper">
     <div class="content" contenteditable ref="contentEditable" @input="handleInput"/>
     <div class="content">{{ content }}</div>
   </div>
-
   <button @click.prevent="handleClick">
-    Create Post
+    Save Post
   </button>
-
-
 </template>
 
 <script setup lang="ts">
-import {TimeLinePost} from "../posts";
+import {Post, TimeLinePost} from "../posts";
 import {ref, onMounted} from "vue";
 import {usePosts} from "../stores/posts";
 import {useRouter} from "vue-router";
+import {useUsers} from "../stores/users";
 
 const props = defineProps<{
-  post: TimeLinePost
-}>()
+  post: TimeLinePost | Post;
+}>();
+
+const emit = defineEmits<{
+  (event: "submit", post: Post): void
+}>();
 
 const title = ref(props.post.title);
 const content = ref(props.post.markdown)
 const contentEditable = ref<HTMLDivElement>();
 const postsStore = usePosts();
 const router = useRouter();
+const usersStore = useUsers();
 
 onMounted(() => {
   if(!contentEditable.value) {
@@ -49,17 +51,16 @@ function handleInput () {
 }
 
 function handleClick () {
-  const newPost: TimeLinePost = {
+  if(!usersStore.currentUserId) {
+    throw Error("User was not found")
+  }
+  const newPost: Post = {
     ...props.post,
+    created: typeof props.post.created === 'string' ? props.post.created : props.post.created.toISO(),
     title: title.value,
+    authorId: usersStore.currentUserId,
     markdown: content.value,
   };
-  postsStore.createNewPost(newPost);
-  router.push('/');
+  emit("submit", newPost);
 }
-
 </script>
-
-<style scoped>
-
-</style>
