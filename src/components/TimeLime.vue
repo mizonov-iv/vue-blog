@@ -1,7 +1,7 @@
 <template>
-  <nav>
+  <nav class="navigation">
     <a
-       href=""
+       class="navigation-item"
        v-for="period in periods"
        :key="period"
        @click.prevent="postsStore.setSelectedPeriod(period)"

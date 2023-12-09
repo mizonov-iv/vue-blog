@@ -20,14 +20,16 @@ function handleInput(e: Event) {
 
 <template>
   <div class="input-wrapper">
-    <label class="input-label" :for="name">{{ name }}</label>
     <input
-        class="input"
+        class="input-field"
         :type="type"
         :id="name"
         :value="modelValue"
         @input="handleInput"
+        autocomplete="off"
+        required
     >
-    <p v-if="!status.valid">{{ status.message }}</p>
+    <label class="input-label" :for="name">{{ name }}</label>
+    <p class="validation-error" v-if="!status.valid">{{ status.message }}</p>
   </div>
 </template>

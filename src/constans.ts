@@ -1,2 +1,2 @@
-export const periods = ["today", "this week", "this month"] as const
+export const periods = ["Today", "This Week", "This Month"] as const
 export type Period = typeof periods[number];

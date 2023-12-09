@@ -1,13 +1,14 @@
 <template>
   <RouterLink
+      class="post-edit-link"
       v-if="canEdit"
       :to="`/posts/${post.id}/edit`"
   >
     Edit Post
   </RouterLink>
-  <div>
+  <div class="post-wrapper">
     <h2>{{ post.title }}</h2>
-    <div>{{ post.markdown }}</div>
+    <p>{{ post.markdown }}</p>
   </div>
 </template>
 

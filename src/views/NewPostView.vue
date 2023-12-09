@@ -1,5 +1,5 @@
 <template>
-  <h1>New Post</h1>
+  <h2>New Post</h2>
   <PostWriter :post="post" @submit="handleSubmit" />
 </template>
 
@@ -24,7 +24,7 @@
     authorId: usersStore.currentUserId,
     title: "Title",
     created: DateTime.now(),
-    markdown: "##Title",
+    markdown: "##Post text",
   }
 
   async function handleSubmit(post: Post) {

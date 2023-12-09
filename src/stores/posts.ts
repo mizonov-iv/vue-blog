@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import {Post, today, thisWeek, thisMonth, TimeLinePost} from "../posts";
+import {Post} from "../posts";
 import {Period} from "../constans";
 import {DateTime} from "luxon";
 import axios from "axios";
@@ -18,7 +18,7 @@ export const usePosts = defineStore("Posts", {
     state: (): PostsState => ({
         ids: [],
         all: new Map(),
-        selectedPeriod: "today",
+        selectedPeriod: "Today",
     }),
     actions: {
         setSelectedPeriod(period: Period) {
@@ -79,11 +79,11 @@ export const usePosts = defineStore("Posts", {
                     }
                 })
                 .filter(post => {
-                    if (state.selectedPeriod === "today") {
+                    if (state.selectedPeriod === "Today") {
                         return post.created >= DateTime.now().minus({day: 1})
                     }
 
-                    if (state.selectedPeriod === "this week") {
+                    if (state.selectedPeriod === "This Week") {
                         return post.created >= DateTime.now().minus({week: 1})
                     }
 

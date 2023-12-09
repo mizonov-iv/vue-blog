@@ -1,15 +1,24 @@
 <template>
-  <label for="">Post Title</label>
-  <input
-      type="text"
-      placeholder="type something"
-      v-model="title"
-  >
-  <div class="post-text-wrapper">
-    <div class="content" contenteditable ref="contentEditable" @input="handleInput"/>
-    <div class="content">{{ content }}</div>
+  <div class="post-title-wrapper">
+    <label>Post Title:</label>
+    <input
+        class="input-field"
+        type="text"
+        placeholder="type something"
+        v-model="title"
+    >
   </div>
-  <button @click.prevent="handleClick">
+  <div class="post-text-wrapper">
+    <div>
+      <h4>Post text:</h4>
+      <div class="content" contenteditable ref="contentEditable" @input="handleInput"/>
+    </div>
+    <div>
+      <h4>Result:</h4>
+      <div class="content">{{ content }}</div>
+    </div>
+  </div>
+  <button class="btn" @click.prevent="handleClick">
     Save Post
   </button>
 </template>

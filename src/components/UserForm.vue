@@ -2,8 +2,8 @@
   <form class="form" @submit.prevent="handleSubmit">
     <FormInput name="Username" :type="'text'" v-model="username" :status="usernameStatus"/>
     <FormInput name="Password" :type="'password'" v-model="password" :status="passwordStatus"/>
-    <p v-if="error">{{ error }}</p>
-    <button :disabled="isValid">Submit</button>
+    <p class="validation-error" v-if="error">{{ error }}</p>
+    <button class="btn" :disabled="isValid">Submit</button>
   </form>
 </template>
 
